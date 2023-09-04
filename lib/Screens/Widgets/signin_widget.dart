@@ -8,8 +8,13 @@ Image logoWidget(String imageName){
       color: Colors.white
   );
 }
-TextField reusableTextField (String text, IconData icon , bool isPasswordType,TextEditingController controller){
-  return TextField(
+TextFormField reusableTextField (String text, IconData icon , bool isPasswordType,TextEditingController controller){
+  return TextFormField(
+      validator: (value) {
+        if (value!.isEmpty) {
+          return 'Please enter some text';
+        }
+      },
     controller: controller,
     obscureText: isPasswordType,
     enableSuggestions: !isPasswordType,
@@ -38,14 +43,14 @@ TextField reusableTextField (String text, IconData icon , bool isPasswordType,Te
 }
 
 
-Container signInSignUpButton(BuildContext context, bool isLogin , Function onTap){
+Container signInSignUpButton(BuildContext context, bool isLogin , VoidCallback onTap){
   return Container(
     width: MediaQuery.of(context).size.width,
     height: 50,
     margin: const EdgeInsets.fromLTRB(0, 10, 0, 20),
     decoration: BoxDecoration(borderRadius: BorderRadius.circular(90)),
     child: ElevatedButton(
-      onPressed: (){},
+      onPressed: onTap,
       child: Text(
         isLogin ? 'LOG IN' : 'SIGN UP',
         style: const TextStyle(

@@ -1,3 +1,8 @@
+import 'package:ecommerce/Screens/sign-in.dart';
+import 'package:ecommerce/data_provider/remote_data/firebase_helper.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'Items/theme_provider.dart';
@@ -8,6 +13,7 @@ class AccountScreen extends StatefulWidget {
 }
 
 class _AccountScreenState extends State<AccountScreen> {
+
   void _toggleDarkMode() {
     final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
     themeProvider.toggleTheme();
@@ -32,8 +38,7 @@ class _AccountScreenState extends State<AccountScreen> {
               backgroundImage: AssetImage('assets/Images/picture.png'),
             ),
             const SizedBox(height: 20),
-            const Text(
-              'John Doe', // Replace with actual user name
+            const Text('esraa', // Replace with actual user name
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 20),
@@ -68,9 +73,11 @@ class _AccountScreenState extends State<AccountScreen> {
 
               ),
               child: TextButton(
-                onPressed: () {
-                  // Handle logout and navigate back to splash screen
-                  Navigator.pushNamedAndRemoveUntil(context, '/splash', (route) => false);
+
+                onPressed: () async {
+                  await FirebaseHelper().Signout();
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => SignInScreen()));
                 },
                 child: const Text('Logout',style: const TextStyle(
                     color: Colors.white,

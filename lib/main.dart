@@ -1,4 +1,5 @@
 import 'package:ecommerce/Screens/Widgets/details.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'Screens/account.dart';
 import 'Screens/home.dart';
@@ -11,7 +12,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 
-
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -20,6 +20,13 @@ void main() async{
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+
+  Widget start(){
+   if(FirebaseAuth.instance.currentUser!=null)
+     return MainScreen();
+   else
+     return SplashScreen();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,14 +43,7 @@ class MyApp extends StatelessWidget {
             ),
             darkTheme: ThemeData.dark(),
             themeMode: themeProviderRef.currentTheme,
-            home:  SplashScreen() ,
-            // initialRoute: '/splash',
-            // routes: {
-            //   '/splash': (context) => const SplashScreen(),
-            //   '/signin': (context) => const SignInScreen(),
-            //   '/signup': (context) => const SignUpScreen(),
-            //   '/home': (context) => const MainScreen(),
-            // },
+            home:  start() ,
           );
         },
       ),
