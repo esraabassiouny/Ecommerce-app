@@ -1,7 +1,6 @@
 import 'package:ecommerce/Screens/sign-in.dart';
 import 'package:ecommerce/data_provider/remote_data/firebase_helper.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -38,7 +37,7 @@ class _AccountScreenState extends State<AccountScreen> {
               backgroundImage: AssetImage('assets/Images/picture.png'),
             ),
             const SizedBox(height: 20),
-            const Text('esraa', // Replace with actual user name
+            const Text('amr', // Replace with actual user name
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 20),
