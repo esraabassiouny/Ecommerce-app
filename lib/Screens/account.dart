@@ -37,7 +37,7 @@ class _AccountScreenState extends State<AccountScreen> {
               backgroundImage: AssetImage('assets/Images/picture.png'),
             ),
             const SizedBox(height: 20),
-            const Text('amr', // Replace with actual user name
+            const Text('Esraa', // Replace with actual user name
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 20),
